@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="Description"
+      content="A quiz game made with Javascript. Select a category and recieve 10 questions of different difficulty"
+    />
+    <title>Trivia Night</title>
+    <!--Custom Styling-->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav id="navbar">
+      <!--Logo image-->
+      <a class="TriviaNight-brand" href="index.html">
+        <div class="logo-image">
+          <img src="img/logo.png" class="brand-img" />
+        </div>
+      </a>
+      <ul>
+        <li><a href="index.html">Categories</a></li>
+        <li><a href="about.html">About us</a></li>
+      </ul>
+    </nav>
+    <!--Section Questions-->
+    <main>
+      <section class="card" id="card">
+        <h1 id="title"></h1>
+        <!--Empty tags since we will fetch from API source-->
+        <div id="buttons"></div>
+        <h1 id="question-number"></h1>
+      </section>
+    </main>
+    <!--Footer-->
+    <footer>
+      <p class="footer-text">Made by Therese Haapanen</p>
+    </footer>
+
+    <!--Custom JS-->
+    <script src="index.js"></script>
+  </body>
+</html>
+
+<!--VALIDATED ABOVE-->
