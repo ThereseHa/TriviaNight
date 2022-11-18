@@ -1,5 +1,5 @@
 //Declare base variables
-const BAS_URL = "https://opentdb.com/api.php?amount=10";
+const BAS_URL = "https://opentdb.com/api.php?amount=11";
 const TOTAL_CATEGORIES = "https://opentdb.com/api_category.php";
 let index = 0;
 let score = 0;
@@ -37,6 +37,13 @@ async function fetchQuestionsAPI(url) {
   return false;
 }
 
+// decodes special HTML characters
+let decodeSpecialChars = (specialCharacterString) => {
+  const text = document.createElement("textarea");
+  text.innerHTML = specialCharacterString;
+  return text.value;
+};
+
 // Shuffling algorithm
 let shuffle = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -48,21 +55,14 @@ let shuffle = (array) => {
   return array;
 };
 
-// decodes special HTML characters
-let decodeSpecialChars = (specialCharacterString) => {
-  const text = document.createElement("textarea");
-  text.innerHTML = specialCharacterString;
-  return text.value;
-};
-
 // Decides title based off the API's title
 let questionTitle = (string) => {
   const title = document.getElementById("title");
   title.innerText = string;
 };
 
-// removes buttons from the div tag
-let removeButtons = () => {
+// Hides buttons from the div
+let hideButtons = () => {
   const div = document.getElementById("buttons");
   while (div.firstChild) {
     div.removeChild(div.firstChild);
@@ -98,12 +98,12 @@ let questionButtonEventHandler = (button, correctAnswer, list) => {
   const pressedButton = button.innerText;
   if (pressedButton === correctAnswer) {
     score++;
-    alert("Correct!");
+    alert("Correct answer!");
   } else {
-    alert("Wrong.\nCorrect Answer: " + correctAnswer);
+    alert("That is wrong :(\nCorrect Answer: " + correctAnswer);
   }
   index++;
-  removeButtons();
+  hideButtons();
   startQuiz(list);
 };
 
@@ -126,7 +126,7 @@ let showRestartButton = () => {
   button.addEventListener("click", () => document.location.reload(true));
 };
 
-// Starts the game, loads one question at a time
+// Starts the game, loads one question at a time, show the end score once the number of questions has reached the length of the list
 let startQuiz = (questionList) => {
   const numberOfQuestions = questionList.length - 1;
   if (index === numberOfQuestions) {
@@ -158,7 +158,7 @@ async function setCategoryButtons() {
   }
 }
 
-// Event for the category buttons
+// Event for the category buttons to handle the correct category
 async function categoryButtonEventHandler(button) {
   const url = BAS_URL + "&category=" + button.id;
   const list = await fetchQuestionsAPI(url);
@@ -166,7 +166,7 @@ async function categoryButtonEventHandler(button) {
     alert("Oops, something went wrong. Please try again later.");
     return;
   }
-  removeButtons();
+  hideButtons();
   startQuiz(list);
 }
 

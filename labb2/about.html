@@ -12,7 +12,7 @@
     <!--Custom Styling-->
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body>
+  <bod>
     <!--Navbar-->
     <nav id="navbar">
       <a class="TriviaNight-brand" href="index.html">
@@ -21,8 +21,17 @@
         </div>
       </a>
       <ul>
-        <li><a href="index.html">Categories</a></li>
-        <li><a href="about.html">About us</a></li>
+        <!--Buttons in navbar-->
+        <li>
+          <a href="index.html"
+            ><button class="bn632-hover bn24">Categories</button></a
+          >
+        </li>
+        <li>
+          <a href="about.html"
+            ><button class="bn632-hover bn24">About us</button></a
+          >
+        </li>
       </ul>
     </nav>
 
@@ -39,6 +48,26 @@
         mollit anim id est laborum.
       </p>
     </div>
+
+    <!--Contact form-->
+    <div class="feedback-card">
+      <div class="feedback-header">
+        SEND US FEEDBACK
+      </div>
+      <form class="feedback-body">
+        <input
+          ,type="email"
+          class="feedback-body__email"
+          placeholder="Email"
+        /><textarea
+          ,type="text"
+          class="feedback-body__message"
+          placeholder="Message"
+        ></textarea
+        ><button class="feedback-body__submit">SEND</button>
+      </form>
+    </div>
+
     <!--Div with image-->
     <div class="about-image">
       <img src="img/trivia_night.png" class="about-img" />
@@ -50,5 +79,8 @@
     </footer>
     <!--Custom JS-->
     <script src="index.js"></script>
+    <script src="about.js"></script>
   </body>
 </html>
+
+<!--ALL VALIDATED-->
